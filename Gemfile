@@ -46,4 +46,6 @@ end
 
 gem 'bootstrap-sass'
 
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
 # ruby "2.0.0"
