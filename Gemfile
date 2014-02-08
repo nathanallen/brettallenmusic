@@ -44,4 +44,6 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-ruby "2.0.0"
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+ruby "1.9.3"
