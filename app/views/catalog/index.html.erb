@@ -1,0 +1,29 @@
+<h1 class="title">Catalog</h1>
+<% SheetMusic.all.each do |sheetmusic| %>
+  <h2><%= sheetmusic.title %></h2>
+  <p class="lead"><%= sheetmusic.subtitle %></p>
+  <p><%= sheetmusic.description %></p>
+  <ul>
+    <li>Genre: <%= sheetmusic.genre %>
+    <li>Duration: <%= sheetmusic.duration %> min
+
+    <% sheetmusic.arrangements.each do |arrangement| %>
+    <li>Version: <%= arrangement.version %>
+      <ul>
+        <li>Instrumentation: <%= arrangement.instrumentation %>
+
+        <% arrangement.parts.each do |part| %>    
+          <% part.items.each do |item|%>
+        <li>Price: <%= item.price %>
+        <li>Vendor: <%= item.vendor %>
+          <% end %>
+        <% end %> 
+
+      </ul>
+
+    <% end %>
+
+
+  </ul>
+<% end %>
+<hr>
