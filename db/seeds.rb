@@ -71,7 +71,7 @@ music_data_hash.each do |record|
         params[attr] = record2[attr]
       end
     end
-    p arrangement = Arrangement.create(params)
+    p arrangement = Arrangement.find_or_create_by(params)
 
     params = {}
     Part.attribute_names.each do |attr|
@@ -87,6 +87,7 @@ music_data_hash.each do |record|
         params[attr] = record2[attr]
       end
     end
+    p params
     p item = Item.create(params)
     
     SHEETMUSIC.arrangements << arrangement
