@@ -3,4 +3,8 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+namespace :db do
+  task :reseed => ['db:drop', 'db:create', 'db:migrate', 'db:seed']
+end
+
 Brettallenmusic::Application.load_tasks
