@@ -8,21 +8,14 @@
     <li>Duration: <%= sheetmusic.duration %> min
 
     <% sheetmusic.arrangements.each do |arrangement| %>
-    <li>Version: <%= arrangement.version %>
-      <ul>
-        <li>Instrumentation: <%= arrangement.instrumentation %>
-
-        <% arrangement.parts.each do |part| %>    
-          <% part.items.each do |item|%>
-        <li>Price: <%= item.price %>
-        <li>Vendor: <%= item.vendor %>
-          <% end %>
-        <% end %> 
-
+    <li><%= "#{arrangement.version} Version (For #{arrangement.instrumentation})"%>
+      <ul>          
+        <li>Available from: 
+          <% arrangement.parts.each do |part| %>
+            <%= part.items.map{|item| item.vendor + ": " + item.price}.join %>
+          <% end %> 
       </ul>
-
     <% end %>
-
 
   </ul>
 <% end %>
