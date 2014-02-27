@@ -79,7 +79,7 @@ music_data_hash.each do |record|
         params[attr] = record2[attr]
       end
     end
-    p part = Part.create(params)
+    p part = Part.find_or_create_by(params)
 
     params = {}
     Item.attribute_names.each do |attr|
