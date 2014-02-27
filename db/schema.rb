@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140209002515) do
   end
 
   create_table "parts", force: true do |t|
+    t.string   "version"
     t.string   "instrument"
     t.string   "scribd_sample_link"
     t.integer  "arrangement_id"
