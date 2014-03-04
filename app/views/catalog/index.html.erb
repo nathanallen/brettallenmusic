@@ -27,7 +27,7 @@
       <div class="col-md-8 col-sm-6 col-xs-8">
         <select class="form-control">
           <% sheetmusic.arrangements.each do |arrangement| %>
-            <option><%= arrangement.version + " - $50" %></option>
+            <option><%= arrangement.version + " - " + arrangement.parts.first.price %></option>
           <% end %>
         </select>
       </div>
@@ -40,23 +40,23 @@
       <div class="col-md-8 col-sm-6 col-xs-8">
         <select class="form-control">
           <% sheetmusic.arrangements.first.parts.each do |part| %>
-            <option><%= part.instrument + " - $50" %></option>
+            <option><%= part.instrument + " - " + part.price %></option>
           <% end %>
         </select>
       </div>
       <div class="col-md-4 col-sm-3 col-xs-3">
-        <button class="btn btn-primary" data-price="$50">Buy Now</button>
+        <button class="btn btn-primary" data-price="<%= part.price %>">Buy Now</button>
       </div>
 
     <% else %>
 
       <div class="col-md-8 col-sm-6 col-xs-8">
         <div class="well">
-          <%= sheetmusic.arrangements.first.version  + " - $50"  %>
+          <%= sheetmusic.arrangements.first.version  + " - " + arrangement.parts.first.price  %>
         </div>
       </div>
       <div class="col-md-4 col-sm-3 col-xs-3">
-        <button class="btn btn-primary" data-price="$50">Buy Now</button>
+        <button class="btn btn-primary" data-price="<%= arrangement.parts.first.price %>">Buy Now</button>
       </div>
 
     <% end %>
@@ -71,7 +71,7 @@
       <div class="col-md-4 col-sm-6 col-xs-4">
         <% sheetmusic.arrangements.first.parts.first.items.each do |item| %>
           <% unless item.vendor == "BAM" %>
-            <button class="btn btn-default btn-xs" data-price="$50">
+            <button class="btn btn-default btn-xs" data-price="<%= item.price %>">
               <%= item.vendor %>
             </button>
           <% end %>
