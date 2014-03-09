@@ -6,11 +6,14 @@ class CatalogController < ApplicationController
         title: music.title,
         subtitle: music.subtitle,
         description: music.description,
-        arrangements: music.versions,
-        our_price: music.arrangements.first.parts.first.price
+        arrangements: music.get_arrangements,
+        our_price: "50"
 
       }
     }
 
   end
 end
+
+
+# music.arrangements.first.parts.first.price

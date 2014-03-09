@@ -3,8 +3,9 @@ class Part < ActiveRecord::Base
   belongs_to :arrangement
 
   def price
-    p "YA"
-    items.where(vendor: "BAM").first.price
+    return "50"
+    # p "YA"
+    # items.where(vendor: "BAM").first.price
   end
 
 
