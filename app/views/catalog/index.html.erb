@@ -27,7 +27,7 @@
       <div class="col-md-8 col-sm-6 col-xs-8">
         <select class="form-control">
           <% sheetmusic.arrangements.each do |arrangement| %>
-            <option><%= arrangement.version + " - $50" %></option>
+            <option><%= arrangement.version + " - " + arrangement.price %></option>
           <% end %>
         </select>
       </div>
@@ -40,7 +40,7 @@
       <div class="col-md-8 col-sm-6 col-xs-8">
         <select class="form-control">
           <% sheetmusic.arrangements.first.parts.each do |part| %>
-            <option><%= part.instrument + " - $50" %></option>
+            <option><%= part.instrument + " - " + part.price %></option>
           <% end %>
         </select>
       </div>
@@ -52,7 +52,7 @@
 
       <div class="col-md-8 col-sm-6 col-xs-8">
         <div class="well">
-          <%= sheetmusic.arrangements.first.version  + " - $50"  %>
+          <%= sheetmusic.arrangements.first.version  + " - " + sheetmusic.arrangements.first.price  %>
         </div>
       </div>
       <div class="col-md-4 col-sm-3 col-xs-3">
