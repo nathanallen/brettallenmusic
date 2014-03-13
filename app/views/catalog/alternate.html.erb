@@ -2,7 +2,7 @@
   <h1 class="title">Catalog</h1>
 </div>
 
-<% SheetMusic.all.each do |sheetmusic| %>
+<% @catalog.each do |sheetmusic| %>
   <div class="col-md-10">
     <h2><%= sheetmusic.title %></h2>
   </div>
@@ -22,12 +22,12 @@
       <dd><%= sheetmusic.duration %> min</dd>
     </dl> -->
 
-    <% if sheetmusic.arrangements.count > 1  %>
+    <% if sheetmusic.multiple_arrangements  %>
 
       <div class="col-md-8 col-sm-6 col-xs-8">
         <select class="form-control">
-          <% sheetmusic.arrangements.each do |arrangement| %>
-            <option><%= arrangement.version + " - $50" %></option>
+          <% sheetmusic.multiple_arrangements.each do |arrangement| %>
+            <option><%= arrangement.first + " - " + arrangement.second %></option>
           <% end %>
         </select>
       </div>
@@ -35,12 +35,12 @@
         <button class="btn btn-primary" data-price="$50">Buy Now</button>
       </div>
 
-    <% elsif sheetmusic.arrangements.first.parts.count > 2 %>
+    <% elsif sheetmusic.multiple_parts %>
 
       <div class="col-md-8 col-sm-6 col-xs-8">
         <select class="form-control">
-          <% sheetmusic.arrangements.first.parts.each do |part| %>
-            <option><%= part.instrument + " - $50" %></option>
+          <% sheetmusic.multiple_parts.each do |part| %>
+            <option><%= part.first + " - " + part.second %></option>
           <% end %>
         </select>
       </div>
@@ -52,7 +52,7 @@
 
       <div class="col-md-8 col-sm-6 col-xs-8">
         <div class="well">
-          <%= sheetmusic.arrangements.first.version  + " - $50"  %>
+          <%= sheetmusic.arrangement.first  + " - " + sheetmusic.arrangement.second  %>
         </div>
       </div>
       <div class="col-md-4 col-sm-3 col-xs-3">
@@ -63,21 +63,7 @@
 
     <div class="clearfix"></div>
 
-    <% if !sheetmusic.arrangements.first.parts.empty? && sheetmusic.arrangements.first.parts.first.items.count > 1 %>
-      <hr>
-      <div class="col-md-8 col-sm-6 col-xs-8">
-        Also available from:
-      </div>
-      <div class="col-md-4 col-sm-6 col-xs-4">
-        <% sheetmusic.arrangements.first.parts.first.items.each do |item| %>
-          <% unless item.vendor == "BAM" %>
-            <button class="btn btn-default btn-xs" data-price="$50">
-              <%= item.vendor %>
-            </button>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
+<!-- e -->
 
     <div class="clearfix"></div>
 
