@@ -17,4 +17,9 @@ class SheetMusic < ActiveRecord::Base
     arrangements.first.parts.count > 2
   end
 
+  def sample_parts
+    # TODO: if multiple arrangements, return samples for each version, else
+    arrangements.first.parts
+  end
+
 end
