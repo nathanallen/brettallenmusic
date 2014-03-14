@@ -7,5 +7,8 @@ class Part < ActiveRecord::Base
     i ? i.price : items.first.price
   end
 
+  def price_in_cents
+    price.match(/\d{2}/).to_s << "00"
+  end
 
 end
