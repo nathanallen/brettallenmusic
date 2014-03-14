@@ -6,4 +6,8 @@ class Arrangement < ActiveRecord::Base
     parts.first.price
   end
 
+  def price_in_cents
+    parts.first.price_in_cents
+  end
+
 end

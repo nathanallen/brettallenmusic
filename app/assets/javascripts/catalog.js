@@ -31,7 +31,7 @@ function getItemData(e){
   return {
     name: dropdown.dataset.name,
     description: selected_item.value,
-    price: selected_item.dataset.price
+    price: parseInt(selected_item.dataset.price),
   }
 }
 

@@ -45,18 +45,18 @@
       <select class="form-control" id="<%= sheetmusic.id %>" data-name="<%= sheetmusic.title %>">
         <% if sheetmusic.multiple_arrangements?  %>
           <% sheetmusic.arrangements.each do |arrangement| %>
-            <option data-price="<%= arrangement.price %>">
+            <option data-price="<%= arrangement.price_in_cents %>">
               <%= arrangement.version + " - " + arrangement.price %>
             </option>
           <% end %>
         <% elsif sheetmusic.multiple_parts? %>
           <% sheetmusic.arrangements.first.parts.each do |part| %>
-            <option data-price="<%= part.price %>">
+            <option data-price="<%= part.price_in_cents %>">
               <%= part.instrument + " - " + part.price %>
             </option>
           <% end %>
         <% else %>
-          <option data-price="<%= sheetmusic.arrangements.first.price %>">
+          <option data-price="<%= sheetmusic.arrangements.first.price_in_cents %>">
             <%= sheetmusic.arrangements.first.version  + " - " + sheetmusic.arrangements.first.price %>
           </option>
         <% end %>
