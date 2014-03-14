@@ -22,7 +22,7 @@
       <dd><%= sheetmusic.duration %> min</dd>
     </dl> -->
 
-    <% if sheetmusic.arrangements.count > 1  %>
+    <% if sheetmusic.multiple_arrangements?  %>
 
       <div class="col-md-8 col-sm-6 col-xs-8">
         <select class="form-control">
@@ -35,7 +35,7 @@
         <button class="btn btn-primary" data-price="$50">Buy Now</button>
       </div>
 
-    <% elsif sheetmusic.arrangements.first.parts.count > 2 %>
+    <% elsif sheetmusic.multiple_parts? %>
 
       <div class="col-md-8 col-sm-6 col-xs-8">
         <select class="form-control">
