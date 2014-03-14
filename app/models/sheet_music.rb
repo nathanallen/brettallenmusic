@@ -22,4 +22,8 @@ class SheetMusic < ActiveRecord::Base
     arrangements.first.parts
   end
 
+  def sample_recording
+    soundcloud_link
+  end
+
 end
