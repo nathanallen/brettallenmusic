@@ -42,28 +42,28 @@
     </dl> -->
 
     <div class="col-md-8 col-sm-6 col-xs-8">
-      <select class="form-control">
+      <select class="form-control" id="<%= sheetmusic.id %>" data-name="<%= sheetmusic.title %>">
         <% if sheetmusic.multiple_arrangements?  %>
           <% sheetmusic.arrangements.each do |arrangement| %>
-            <option>
+            <option data-price="<%= arrangement.price %>">
               <%= arrangement.version + " - " + arrangement.price %>
             </option>
           <% end %>
         <% elsif sheetmusic.multiple_parts? %>
           <% sheetmusic.arrangements.first.parts.each do |part| %>
-            <option>
+            <option data-price="<%= part.price %>">
               <%= part.instrument + " - " + part.price %>
             </option>
           <% end %>
         <% else %>
-          <option>
+          <option data-price="<%= sheetmusic.arrangements.first.price %>">
             <%= sheetmusic.arrangements.first.version  + " - " + sheetmusic.arrangements.first.price %>
           </option>
         <% end %>
       </select>
     </div>
     <div class="col-md-4 col-sm-3 col-xs-3">
-      <button class="btn btn-primary" data-price="$50">Buy Now</button>
+      <button class="btn btn-primary buy-now" id="<%= sheetmusic.id %>">Buy Now</button>
     </div>
 
     <div class="clearfix"></div>
