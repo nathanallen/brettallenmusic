@@ -63,18 +63,16 @@
 
     <div class="clearfix"></div>
 
-    <% if !sheetmusic.arrangements.first.parts.empty? && sheetmusic.arrangements.first.parts.first.items.count > 1 %>
+    <% unless (vendor_items = sheetmusic.outside_vendors).empty? %>
       <hr>
       <div class="col-md-8 col-sm-6 col-xs-8">
         Also available from:
       </div>
       <div class="col-md-4 col-sm-6 col-xs-4">
-        <% sheetmusic.arrangements.first.parts.first.items.each do |item| %>
-          <% unless item.vendor == "BAM" %>
-            <button class="btn btn-default btn-xs" data-price="$50">
-              <%= item.vendor %>
-            </button>
-          <% end %>
+        <% vendor_items.each do |item| %>
+          <button class="btn btn-default btn-xs" >
+            <%= item.vendor %>
+          </button>
         <% end %>
       </div>
     <% end %>

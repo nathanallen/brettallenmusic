@@ -2,6 +2,10 @@ class SheetMusic < ActiveRecord::Base
   has_many :arrangements
 
 
+  def outside_vendors
+    arrangements.first.parts.first.items.where("vendor != ?", "BAM")
+  end
+
   # def get_arrangements
   #   if arrangements.count > 1 #multiple_arrangements
   #     return arrangements.map{|a| a.version }
