@@ -11,6 +11,8 @@ $('document').ready(function(){
     token: function(token, args) {
       // Use the token to create the charge with a server-side script.
       // You can access the token ID with `token.id`
+      $.post('/charges', {stripeToken: token.id})
+        .done(function(data){console.log(data)})
     }
   });
 

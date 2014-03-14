@@ -8,7 +8,7 @@ class ChargesController < ApplicationController
     @amount = 500
 
     customer = Stripe::Customer.create(
-      :email => 'example@stripe.com',
+      :email => 'thenathanator@gmail.com',
       :card  => params[:stripeToken]
     )
 
@@ -23,5 +23,9 @@ class ChargesController < ApplicationController
     flash[:error] = e.message
     redirect_to charges_path
   end
+
+  # @display_amount = '%.2f' % (@amount.to_i/100.0)
+
+  # redirect_to catalog_index
 
 end
