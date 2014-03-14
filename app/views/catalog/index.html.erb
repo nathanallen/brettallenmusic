@@ -11,6 +11,15 @@
   <div class="col-md-7 col-sm-9 col-xs-12">     
     <p class="lead"><%= sheetmusic.subtitle %></p>
     <p><%= sheetmusic.description %></p>
+    <% if sheetmusic.multiple_parts? %>
+      <p>Sample Parts:
+        <% sheetmusic.sample_parts.each do |part| %>
+          <a class='btn btn-default btn-xs' href="<%= part.scribd_sample_link %>" >
+          <%= part.instrument %>
+          </a>
+        <% end %>
+      </p>
+    <% end %>
   </div>
 
   <div class="col-md-4 col-md-offset-1">
