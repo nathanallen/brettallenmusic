@@ -3,9 +3,19 @@
 </div>
 
 <% SheetMusic.all.each do |sheetmusic| %>
+
   <div class="col-md-10">
-    <h2><%= sheetmusic.title %></h2>
+    <h2>
+      <%= sheetmusic.title %>
+      <% if sheetmusic.sample_recording %>
+        <a class="btn btn-default btn-xs" href="<%= sheetmusic.sample_recording %>">
+          <i class="icon-play"></i>
+          play
+        </a>
+      <% end %>
+    </h2>
   </div>
+
   <div class="clearfix"></div>
 
   <div class="col-md-7 col-sm-9 col-xs-12">     
