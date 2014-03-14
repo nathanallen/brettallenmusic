@@ -22,30 +22,44 @@
       <dd><%= sheetmusic.duration %> min</dd>
     </dl> -->
 
-    <div class="col-md-8 col-sm-6 col-xs-8">
-      <select class="form-control">
-        <% if sheetmusic.multiple_arrangements?  %>
+    <% if sheetmusic.multiple_arrangements?  %>
+
+      <div class="col-md-8 col-sm-6 col-xs-8">
+        <select class="form-control">
           <% sheetmusic.arrangements.each do |arrangement| %>
-            <option>
-              <%= arrangement.version + " - " + arrangement.price %>
-            </option>
+            <option><%= arrangement.version + " - " + arrangement.price %></option>
           <% end %>
-        <% elsif sheetmusic.multiple_parts? %>
+        </select>
+      </div>
+      <div class="col-md-4 col-sm-3 col-xs-3">
+        <button class="btn btn-primary" data-price="$50">Buy Now</button>
+      </div>
+
+    <% elsif sheetmusic.multiple_parts? %>
+
+      <div class="col-md-8 col-sm-6 col-xs-8">
+        <select class="form-control">
           <% sheetmusic.arrangements.first.parts.each do |part| %>
-            <option>
-              <%= part.instrument + " - " + part.price %>
-            </option>
+            <option><%= part.instrument + " - " + part.price %></option>
           <% end %>
-        <% else %>
-          <option>
-            <%= sheetmusic.arrangements.first.version  + " - " + sheetmusic.arrangements.first.price %>
-          </option>
-        <% end %>
-      </select>
-    </div>
-    <div class="col-md-4 col-sm-3 col-xs-3">
-      <button class="btn btn-primary" data-price="$50">Buy Now</button>
-    </div>
+        </select>
+      </div>
+      <div class="col-md-4 col-sm-3 col-xs-3">
+        <button class="btn btn-primary" data-price="$50">Buy Now</button>
+      </div>
+
+    <% else %>
+
+      <div class="col-md-8 col-sm-6 col-xs-8">
+        <div class="well">
+          <%= sheetmusic.arrangements.first.version  + " - " + sheetmusic.arrangements.first.price  %>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-3 col-xs-3">
+        <button class="btn btn-primary" data-price="$50">Buy Now</button>
+      </div>
+
+    <% end %>
 
     <div class="clearfix"></div>
 
