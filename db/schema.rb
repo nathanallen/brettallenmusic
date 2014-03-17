@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209002515) do
+ActiveRecord::Schema.define(version: 20140314204534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,34 @@ ActiveRecord::Schema.define(version: 20140209002515) do
     t.integer  "part_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.string   "stripe_token"
+    t.string   "stripe_customer_id"
+    t.string   "description"
+    t.integer  "amount"
+    t.boolean  "completed",                default: false
+    t.string   "email"
+    t.string   "billing_name"
+    t.string   "billing_address_line1"
+    t.string   "billing_address_zip"
+    t.string   "billing_address_city"
+    t.string   "billing_address_state"
+    t.string   "billing_address_country"
+    t.string   "shipping_name"
+    t.string   "shipping_address_line1"
+    t.string   "shipping_address_zip"
+    t.string   "shipping_address_city"
+    t.string   "shipping_address_state"
+    t.string   "shipping_address_country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders_items", force: true do |t|
+    t.integer "orders_id"
+    t.integer "items_id"
   end
 
   create_table "parts", force: true do |t|
