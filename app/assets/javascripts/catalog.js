@@ -1,19 +1,14 @@
-var handler
+var handler, item_data
 
 $('document').ready(function(){
 
   setBuyNowListeners()
 
   handler = StripeCheckout.configure({
-    key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+    key: 'pk_test_o9iaBk6OeqmmjDG5o5XaLrAf',
     shippingAddress: true,
     //image: '/kcleff-icon-or-sheetmusic.png',
-    token: function(token, args) {
-      // Use the token to create the charge with a server-side script.
-      // You can access the token ID with `token.id`
-      $.post('/charges', {stripeToken: token.id})
-        .done(function(data){console.log(data)})
-    }
+    token: submitOrder
   });
 
 })
@@ -21,7 +16,7 @@ $('document').ready(function(){
 function setBuyNowListeners(){
   $('.buy-now').each(function(_,v){
     $(v).on('click',function(e){
-      e.preventDefault();
+      e.preventDefault()
       item_data = getItemData(e)
       openCheckout(item_data)
     })
