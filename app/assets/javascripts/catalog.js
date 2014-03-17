@@ -1,16 +1,8 @@
 var handler, item_data
 
 $('document').ready(function(){
-
   setBuyNowListeners()
-
-  handler = StripeCheckout.configure({
-    key: 'pk_test_o9iaBk6OeqmmjDG5o5XaLrAf',
-    shippingAddress: true,
-    //image: '/kcleff-icon-or-sheetmusic.png',
-    token: submitOrder
-  });
-
+  configureCheckout()
 })
 
 function setBuyNowListeners(){
@@ -32,6 +24,16 @@ function getItemData(e){
     price: parseInt(selected_item.dataset.price),
     //item_id
   }
+}
+
+function configureCheckout(){
+  var stripe_key = $('meta[name="stripe-key"]').attr('content')
+  handler = StripeCheckout.configure({
+    key: stripe_key,
+    shippingAddress: true,
+    //image: '/kcleff-icon-or-sheetmusic.png',
+    token: submitOrder
+  });
 }
 
 function openCheckout(item_data){

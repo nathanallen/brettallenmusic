@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "https://checkout.stripe.com/checkout.js", "application" %>
+  <%= tag :meta, :name => "stripe-key", :content => ENV['PUBLISHABLE_KEY'] %>
   <%= csrf_meta_tags %>
 </head>
 <body>
