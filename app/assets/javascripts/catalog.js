@@ -30,9 +30,17 @@ function getItemData(e){
     name: dropdown.dataset.name,
     description: selected_item.value,
     price: parseInt(selected_item.dataset.price),
+    //item_id
   }
 }
 
 function openCheckout(item_data){
-  handler.open(item_data);
+  handler.open(item_data)
+}
+
+function submitOrder(token,args){
+  args.email = token.email
+  $.post('/charges', {stripe_token: token.id, customer: args, item: item_data})
+   .success(function(data){alert("Thanks for your order!")})
+   .fail(function(){alert("There was a problem with your order.")})
 }
