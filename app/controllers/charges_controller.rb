@@ -27,9 +27,5 @@ class ChargesController < ApplicationController
   else
     order.save
   end
-
-  # @display_amount = '%.2f' % (@amount.to_i/100.0)
-
-  # redirect_to catalog_index
-
+  
 end
