@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'CSV'
+require 'csv'
 
 # Load title, subtitle, description and use title as hash key
 path_to_file = Rails.root + 'db/seed_data/catalog-1.csv'
